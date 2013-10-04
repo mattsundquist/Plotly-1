@@ -1,0 +1,704 @@
+<!-- basic-line -->
+<div class="example-block r-project basic-line">
+<pre class="prettyprint linenums lang-r">
+x0 = c(1,2,3,4); y0 = c(10,15,13,17)
+x1 = c(2,3,4,5); y1 = c(16,5,11,9)
+response = p$plotly(x0, y0, x1, y1)
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- line-scatter -->
+<div class="example-block r-project line-scatter">
+<pre class="prettyprint linenums lang-r">
+trace0 = list(x=c(1,2,3,4), 
+  y=c(10,15,13,17), 
+  type = 'scatter',
+  mode = 'markers');
+
+trace1 = list(x=c(2,3,4,5), 
+  y=c(16,5,11,9), 
+  type='scatter',
+  mode='lines');
+
+trace2 = list(x=c(1,2,3,4), 
+  y=c(12,9,15,12),
+  type='scatter',
+  mode='lines+markers');
+
+response = p$plotly(trace0, trace1, trace2)
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- line-style  -->
+<div class="example-block r-project line-style">
+<pre class="prettyprint linenums lang-r">
+p &lt;- plotly('anna__lyst','y7t6z')
+x1 &lt;- c(1,2,3); y1 &lt;- c(4,5,6)
+x2 &lt;- c(1,2,3); y2 &lt;- c(2,10,12)
+p$plot(x1,y1,x2,y2)
+
+data1 &lt;- list(<span class="label-note" data-title="This is the maximal data list. 'x', and 'y' are the only field, value pairs required, all other field,value pairs are optional." data-placement="right" data-original-title="">note</span>
+    x=x1,
+    y=y1,
+    name='Experiment',
+    line=list(color='rgb(3,78,123',<span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span>
+        width=6,
+        dash='dot'),<span class="label-options" data-title="solid&lt;br&gt;dot&lt;br&gt;dash&lt;br&gt;longdash&lt;br&gt;dashdot&lt;br&gt;longdashdot" data-placement="right" data-original-title="">options</span>
+    marker=list(opacity=1.0,
+        symbol='square',<span class="label-options" data-title="square&lt;br&gt;circle&lt;br&gt;cross&lt;br&gt;triangle-up&lt;br&gt;triangle-down&lt;br&gt;triangle-left&lt;br&gt;triangle-right" data-placement="right" data-original-title="">options</span>
+        size=12,
+        color='rgb(54,144,192)',
+        line=list(width=3,<span class="label-note" data-title="this line refers to the border around the markers" data-placement="right" data-original-title="">note</span>
+            color='lightblue')
+        )
+    )
+data2 &lt;- list(
+    x=x2,
+    y=y2,
+    name='Control',
+    line=list(  color='purple',
+        width=4,
+        dash='dashdot'),
+    marker=list(opacity=0.9,
+        symbol='cross',
+        size=16,
+        color='fuchsia',
+        line=list(width=0,
+            color='')
+        )
+    )
+
+response&lt;-p$plotly(data1,data2)
+
+# url and filename
+url &lt;- response$url
+filename &lt;- response$filename
+
+</pre>
+</div>
+
+<!---------------->
+<!-- Area Plots -->
+<!---------------->
+
+<!-- basic-area -->
+<div class="example-block r-project basic-area">
+<pre class="prettyprint linenums lang-r">
+trace0 = list(x=c(1,2,3,4), 
+  y=c(0,2,3,5), 
+  fill = 'tozeroy'); <span class="label-options" data-title="'tozeroy'&lt;br&gt;'tonexty'&lt;br&gt;'tozerox'&lt;br&gt;'tonextx'" data-placement="right" data-original-title="">options</span>
+
+trace1 = list(x=c(1,2,3,4), 
+  y=c(3,5,1,7), 
+  fill = 'tonexty');
+
+response = p$plotly(trace0, trace1)
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!---------------->
+<!-- BAR CHARTS -->
+<!---------------->
+
+<!-- basic-bar -->
+<div class="example-block r-project basic-bar">
+<pre class="prettyprint linenums lang-r">
+x1 &lt;- c('giraffes','orangutans','monkeys')<span class="label-note" data-title="x-data can also be numerical" data-placement="right" data-original-title="">note</span>
+y1 &lt;- c(20,14,23)
+data &lt;- list(x = x1, y = y1,
+    type = 'bar')<span class="label-options" data-title="'scatter'&lt;br&gt;'bar'&lt;br&gt;'heatmap'&lt;br&gt;'histogramx'&lt;br&gt;'histogramy'&lt;br&gt;'histogram2d'" data-placement="right" data-original-title="">options</span>
+
+response &lt;- p$plotly(data)
+
+# url and filename
+url &lt;- response$url
+filename &lt;- response$filename
+</pre>
+</div>
+
+<!-- grouped-bar -->
+<div class="example-block r-project grouped-bar">
+<pre class="prettyprint linenums lang-r">
+categories = c('giraffes', 'orangutans', 'monkeys')
+SF = list(name='SF Zoo',
+    x=categories,
+    y=c(20, 14, 23),
+    type='bar');
+LA = list(name='LA Zoo',
+    x=categories,
+    y=c(12,18,29),
+    type='bar');
+layout = list(
+    barmode='group',
+    xaxis=list(type='category'),
+    categories=categories);
+response = p$plotly(LA, SF, kwargs=list(layout=layout))
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- stacked-bar -->
+<div class="example-block r-project stacked-bar">
+<pre class="prettyprint linenums lang-r">
+[...]   # ... SF and LA data from above
+layout = list(barmode='stack',  <span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
+    xaxis=list(type='category'),
+    categories=categories)
+response = p$plotly(SF, LA, kwargs=list(layout=layout))
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- style-bar -->
+<div class="example-block r-project style-bar">
+<pre class="prettyprint linenums lang-r">
+categories=list('giraffes', 'orangutans', 'monkeys')
+SF = list(name='SF Zoo',
+  x=categories,
+  y=c(20, 14, 23),
+  type='bar',
+  marker=list( #<span class="label-note" data-title="'marker' refers to the bar." data-placement="right" data-original-title="">note</span>
+    color='orange', #<span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span>
+    line=list(color='grey', #<span class="label-note" data-title="'line' refers to the line around the bar." data-placement="right" data-original-title="">note</span>
+      width=3)));
+
+LA = list(name='LA Zoo',
+  x=categories,
+  y=c(12,18,29),
+  type='bar',
+  marker=list('color', 'rgb(111, 168, 220)',
+    line=list('color', 'grey',
+      width=3)))
+
+layout = list(title='Animal Population',
+  barmode='group', #<span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
+  yaxis=list(name='# of animals (thousands)'),
+  xaxis=list(type='category'),
+  categories=categories,
+  bargap=0.25, #<span class="label-note" data-title="This is the gap between bars inside a group." data-placement="right" data-original-title="">note</span>
+  bargroupgap=0.3, #<span class="label-note" data-title="This is the gap between groups of bars." data-placement="right" data-original-title="">note</span>
+  bardir='v') #<span class="label-options" data-title="'v' for vertically aligned bars&lt;br&gt;'h' for horizontally aligned bars" data-placement="right" data-original-title="">options</span>
+
+response = p$plotly(LA, SF, kwargs=list(layout=layout))
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!---------------->
+<!-- ERROR BARS -->
+<!---------------->
+
+<!-- Error Bars -->
+<div class="example-block r-project basic-error-bar">
+<pre class="prettyprint linenums lang-r">
+data = list(x=c(0,1,2), 
+  y=c(6,10,2),
+  error_y=list(type='data', <span class="label-options" data-title="'data'&lt;br&gt;'percent'&lt;br&gt;'constant'&lt;br&gt;'sqrt'" data-placement="right" data-original-title="">options</span>
+    array=c(1,2,3),
+    visible=TRUE));
+response = p$plotly(data);
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- percent-error-bar -->
+<div class="example-block r-project percent-error-bar">
+<pre class="prettyprint linenums lang-r">
+data = list(x=c(0,1,2), 
+  y=c(6,8,4),
+  error_y=list(type='percent', <span class="label-options" data-title="'data'&lt;br&gt;'percent'&lt;br&gt;'constant'&lt;br&gt;'sqrt'" data-placement="right" data-original-title="">options</span>
+    value=50, <span class="label-note" data-title="specify a 'value' for the 'percent' and 'constant' error bar type, an 'array' for the 'data' error bar type, and nothing for the 'sqrt' error bar type" data-placement="right" data-original-title="">note</span>
+    visible=TRUE));
+response = p$plotly(data);
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- error-bar-bar -->
+<div class="example-block r-project error-bar-bar">
+<pre class="prettyprint linenums lang-r">
+categories = c('Trial 1', 'Trial 2', 'Trial 3')
+control = list(x=categories, 
+  y=c(3, 6, 4),
+  type='bar',
+  name='Control',
+  error_y=list(type='data', 
+    array=c(1, 0.5, 1.5),  <span class="label-note" data-title="specify a value for the 'percent' and 'constant' error bar type." data-placement="right" data-original-title="">note</span>
+    visible=TRUE))
+
+exp = list(x=categories, 
+  y=c(4, 7, 3),
+  type='bar',
+  name='Experiment',
+  error_y=list(type='data', 
+    array=c(0.5, 1, 2), 
+    visible=TRUE));     
+
+layout = list(barmode='group')
+
+response = p$plotly(control, exp, kwargs=list(layout=layout));
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!--------------->
+<!-- BOX PLOTS -->
+<!--------------->
+
+<!-- basic-box-plot -->
+<div class="example-block r-project basic-box-plot">
+<pre class="prettyprint linenums lang-r">
+box1 = list(y=c(0,1,2,4), 
+    type='box')
+box2 = list(y=c(1,2,4,8),
+    type='box') 
+response = p$plotly(list(box1,box2))
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- jitter -->
+<div class="example-block r-project jitter">
+<pre class="prettyprint linenums lang-r">
+box = list(y=rnorm(50),
+    type='box', 
+    boxpoints='all', <span class="label-options" data-title="'all'&lt;br&gt;'outliers'&lt;br&gt;false" data-placement="right" data-original-title="">options</span>
+    jitter=0.3, <span class="label-note" data-title="width of the jittered scatter" data-placement="right" data-original-title="">note</span>
+    pointpos=-1.8) <span class="label-note" data-title="amount that the data points are offset from the boxplot" data-placement="right" data-original-title="">note</span>
+response = p$plotly(list(box))
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!---------------->
+<!-- HISTOGRAMS -->
+<!---------------->
+
+<!-- basic-histo -->
+<div class="example-block r-project basic-histo">
+<pre class="prettyprint linenums lang-r">
+x = rnorm(500) # normally distributed vector
+data = list(x=x,
+    type='histogramx');
+response = p$plotly(data);
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- stacked-histo -->
+<div class="example-block r-project stacked-histo">
+<pre class="prettyprint linenums lang-r">
+x0 = rnorm(500)
+x1 = rnorm(500)+1
+data0 = list(x=x0,
+    type='histogramx')
+data1 = list(x=x1,
+    type='histogramx')
+layout = list(barmode='stack') <span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
+response = p$plotly(data0, data1, kwargs=list(layout=layout))
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- overlaid-histo -->
+<div class="example-block r-project overlaid-histo">
+<pre class="prettyprint linenums lang-r">
+[...] # data0, data1 from the above example
+layout = list(barmode='overlay')  <span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
+response = p$plotly(data0, data1, kwargs=list(layout=layout))
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- style-histo -->
+<div class="example-block r-project style-histo">
+<pre class="prettyprint linenums lang-r">
+x0 = rnorm(500)
+x1 = rnorm(500)+1
+data0 = list(x=x0,
+  type='histogramx',
+  name='control',
+  marker=list(  <span class="label-note" data-title="'marker' refers to the bar." data-placement="right" data-original-title="">note</span>
+    color='fuchsia', <span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span>
+    opacity=0.75,
+    line=list(color='grey',  <span class="label-note" data-title="'line' refers to the line around the bar." data-placement="right" data-original-title="">note</span>
+      width=0)),
+  autobinx=FALSE,
+  xbins=list(
+    start=-3.2,
+    end=2.8,
+    size=0.2,
+  histnorm='count')) <span class="label-options" data-title="'count'&lt;br&gt;'percent'&lt;br&gt;'probability'&lt;br&gt;'density'&lt;br&gt;'probability density'" data-placement="right" data-original-title="">options</span>
+
+data1 = list(x=x1,
+  name='experiment',
+  type='histogramx',
+  marker=list(
+    color='rgb(255, 217, 102)',
+    opacity=0.75),
+  autobinx=FALSE,
+  xbins=list(
+    start=-1.8,
+    end=4.2,
+    size=0.2))
+
+layout = list(barmode='overlay', <span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
+  bargap=0.25, <span class="label-note" data-title="This is the gap between bars inside a group." data-placement="right" data-original-title="">note</span>
+  bargroupgap=0.3, <span class="label-note" data-title="This is the gap between groups of bars." data-placement="right" data-original-title="">note</span>
+  bardir='v', <span class="label-options" data-title="'v' for vertically aligned bars&lt;br&gt;'h' for horizontally aligned bars" data-placement="right" data-original-title="">options</span>
+  title='Sampled Results',
+  xaxis=list(title='Value'),
+  yaxis=list(title='Count'))    
+response = p$plotly(data0, data1, kwargs=list(layout=layout))
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- 2d-histo -->
+<div class="example-block r-project 2d-histo">
+<pre class="prettyprint linenums lang-r">
+x = rnorm(500)
+y = rnorm(500)+1
+data = list(x=x, y=y, 
+    type='histogram2d')
+response = p$plotly(data)
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- 2d-histo-options -->
+<div class="example-block r-project 2d-histo-options">
+<pre class="prettyprint linenums lang-r">
+x = rnorm(500);
+y = rnorm(500)+1;
+data = list(x=x, y=y,
+  type='histogram2d',
+  autobinx=FALSE,
+  xbins=list(
+    start=-3,
+    end=3,
+    size=0.5),
+  autobiny=FALSE,
+  ybins=list(
+    start=-2.5,
+    end=4,
+    size=0.5),
+  zauto=FALSE,
+  zmin=0,
+  zmax=0.4,
+  histnorm='probability')<span class="label-options" data-title="'count'&lt;br&gt;'percent'&lt;br&gt;'probability'&lt;br&gt;'density'&lt;br&gt;'probability density'" data-placement="right" data-original-title="">options</span>
+response = p$plotly(data)
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-------------->
+<!-- Heatmaps -->
+<!-------------->
+
+<!-- basic-heatmap -->
+<div class="example-block r-project basic-heatmap">
+<pre class="prettyprint linenums lang-r">
+z = matrix(c(10,20,30,20,1,60,30,60,1), nrow=3, ncol=3)
+data = list(z=z, type='heatmap')
+response = p$plotly(data)
+
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- labeled-heatmap -->
+<div class="example-block r-project labeled-heatmap">
+<pre class="prettyprint linenums lang-r">
+x = c('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday')
+y = c('Morning', 'Afternoon', 'Evening')
+z = matrix(c(10,20,30,50,1,20,1,60,80,30,30,60,1,-10,20), nrow=3, ncol=5)
+data = list(x=x,y=y,z=z, type='heatmap')
+response = p$plotly(data)
+url = response$url
+filename = response$filename
+</pre>
+</div>
+<!----------------->
+<!-- Mixed Types -->
+<!----------------->
+
+<!-- bar-line -->
+<div class="example-block r-project ">
+<pre class="prettyprint linenums lang-r">
+x0 = seq(0, 5, len=15)
+y0 = sin(x0) + runif(15)
+data0 = list(x=x0, y=y0, 
+    type='scatter')
+
+x1 = c(0, 1, 2, 3, 4, 5)
+y1 = c(1, 0.5, 0.7, -1.2, 0.3, 0.4)
+data1 = list(x=x1,y=y1,
+    type='bar');
+
+response = p$plotly(data0, data1)
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- 2d-histo-scatter -->
+<div class="example-block r-project 2d-histo-scatter">
+<pre class="prettyprint linenums lang-r">
+x0 = rnorm(100)/5. + 0.5;
+y0 = rnorm(100)/5. + 0.5;
+ 
+x1 = rnorm(80)/7. + 0.1;
+y1 = rnorm(80)/8. + 1.1;
+ 
+x = c(x0,x1);
+y = c(y0,y1);
+
+data0 = list(x=x0, y=y0, 
+  marker=list(symbol='circle'),
+  type='scatter', mode='markers')
+data1 = list(x=x1, y=y1, 
+  marker=list(symbol='cross'),
+  type='scatter', mode='markers')
+ 
+data_hist = list(x=x, y=y, 
+  type='histogram2d')
+
+response = p$plotly(data0,data1,data_hist)
+url = response$url
+filename = response$filename
+</pre>
+</div>
+
+<!-- file-options -->
+<div class="example-block r-project file-options">
+<pre class="prettyprint linenums lang-r">
+# creates a new plot named 'myplot'
+# if 'myplot' already exists, then the plot
+# will be named 'myplot (1)'
+r = p$plotly(c(1,2,3,4), c(3,6,4,5),
+    kwargs=list(filename='myplot',
+    fileopt='new',
+    layout=list(title="fileopt='new'")))
+fn = r$filename
+
+
+# appends another trace to 'myplot'
+p$plotly(c(1,2,3,4), c(5,4,5,4),
+    kwargs=list(filename=fn,
+    fileopt='append',
+    layout=list(title="fileopt='append'")))
+
+
+# overwrites 'myplot' with new data
+p$plotly(c(1,2,3,4), c(5,5,3,3),
+    kwargs=list(filename=fn,
+    fileopt='overwrite',
+    layout=list(title="fileopt='overwrite'")))
+
+
+
+# extends trace 1 of 'myplot' with new data
+# (good for streaming data into plots)
+p$plotly(c(5,6,7), c(4,4,5),
+    kwargs=list(filename=fn,
+    fileopt='extend',
+    layout=list(title="fileopt='extend'")))
+
+                                                    
+</pre>
+</div>
+
+<!-- size-background -->
+<div class="example-block r-project size-background">
+<pre class="prettyprint linenums lang-r">
+x1 &lt;- seq(0,20*pi,length=500)
+y1 &lt;- sin(x1)*exp(-0.1*x1)
+#sign into plotly
+source('plotly.R')
+p &lt;- plotly('anna__lyst','y7t6z')
+# plot in plot.ly
+datastyle &lt;- list(
+  line = list(
+    color='rgb(84,39,143)',
+    width=4))
+d &lt;- p$setdatastyle(datastyle)
+
+p$plotly(x1,y1,kwargs=list(style=datastyle))
+
+
+# style the layout
+fontlist &lt;- '\"Avant Garde\", Avantgarde, \"Century Gothic\", CenturyGothic, \"AppleGothic\", sans-serif'<span class="label-note" data-title="Supply a list of fonts in order of preference for the browser." data-placement="right" data-original-title="">note</span>
+
+
+layout &lt;- list(  title='Damped Sinusoid',<span class="label-note" data-title="This is the maximal layout-list struct. Not all field:value pairs need to be specified." data-placement="right" data-original-title="">note</span>
+   titlefont=list(
+    family=fontlist,
+    size=25,
+    color='rgb(84,39,143)'),<span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span> 
+    
+  autosize=FALSE,
+  width=600,
+  height=600,
+  margin=list(l=70,<span class="label-note" data-title="l: left&lt;br&gt;r: right&lt;br&gt;t: top&lt;br&gt;b: bottom" data-placement="right" data-original-title="">note</span>
+    r=40,
+    t=60,
+    b=60,
+    pad=2),
+  paper_bgcolor= 'rgb(188, 189, 220)',<span class="label-note" data-title="margin background color" data-placement="right" data-original-title="">note</span>
+
+  plot_bgcolor='rgb(158, 154, 200)',<span class="label-note" data-title="plot background color" data-placement="right" data-original-title="">note</span>
+
+  font=list(family=fontlist,<span class="label-note" data-title="global font" data-placement="right" data-original-title="">note</span>
+    size=20,
+    color='rgb(84,39,143)'),
+  showlegend=FALSE)
+
+response &lt;- p$layout(layout)
+
+# url and filename
+url &lt;- response$url
+filename &lt;- response$filename
+</pre>
+</div>
+
+<!-- axes-grid -->
+<div class="example-block r-project axes-grid">
+<pre class="prettyprint linenums lang-r">
+x1 &lt;- seq(0,10,length=200)
+y1 &lt;- sin(2*pi*x1)*exp(-0.1*x1)
+#sign into plotly
+source('plotly.R')
+p &lt;- plotly('anna__lyst','y7t6z')
+# plot in plot.ly
+p$plotly(x1,y1)
+# a lil styling of data
+datastyle &lt;- list(line=list(color='rgb(74, 134, 232)'))
+p$style(datastyle)
+
+
+# axis style lists
+xaxisstyle &lt;- list(<span class="label-note" data-title="This is the maximal axis style list. Not all field, value pairs need to be specified." data-placement="right" data-original-title="">note</span>
+    title='time (ms)',
+    titlefont=list(size=18
+        color='rgb(102,102,102)'),<span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span>
+    
+    autorange=FALSE,
+    type='linear',<span class="label-options" data-title="linear&lt;br&gt;log" data-placement="right" data-original-title="">options</span>
+    range=c(-1,11),
+    
+    autotick=FALSE,
+    tick0=0,
+    dtick=2,<span class="label-note" data-title="Numerical spacing between ticks" data-placement="right" data-original-title="">note</span>
+    showticklabels=TRUE,
+    ticks='outside',<span class="label-options" data-title="outside&lt;br&gt;inside&lt;br&gt;none" data-placement="right" data-original-title="">options</span>
+    ticklen=8,
+    tickwidth=3,
+    tickcolor='lightgrey',
+    tickfont=list(
+        family='sans-serif',
+        color='rgb(142,142,142)',
+        size=14),
+    
+    showgrid=TRUE,<span class="label-note" data-title="showgrid=FALSE will remove the gridlines" data-placement="right" data-original-title="">note</span>
+    gridwidth=2,
+    gridcolor='white',
+
+    zeroline=TRUE,
+    zerolinecolor='fuchsia',
+    zerolinecolor='darkgrey',
+
+    linecolor='white'<span class="label-note" data-title="The border-line around the plot" data-placement="right" data-original-title="">note</span>
+)
+
+yaxisstyle &lt;- list(  
+    title='battery voltage (mV)',
+    titlefont=list(color='rgb(102,102,102)',
+        size=18),
+    type='linear',
+    gridcolor='white',
+    zerolinecolor='darkgrey',
+    linecolor='white',
+    ticklen=8,
+    tickwidth=3,
+    tickcolor='lightgrey',
+    tickfont=list(
+        family='sans-serif',
+        color='rgb(142,142,142)',
+        size=14)
+    )
+
+# place the axis-lists into a layout list
+layoutstyle &lt;- list(
+    xaxis=xaxisstyle,
+    yaxis=yaxisstyle,
+    paper_bgcolor='white',
+    plot_bgcolor='rgb(223,223,223)',
+    showlegend=FALSE
+    )
+
+response = p$layout(layoutstyle)
+
+# url and filename
+url &lt;- response$url
+filename &lt;- response$filename
+</pre>
+</div>
+
+<!-- legend-format -->
+<div class="example-block r-project legend-format">
+<pre class="prettyprint linenums lang-r">
+t1 &lt;- seq(0,2*pi,length=100)
+x1 &lt;- cos(t1)-sin(t1)*sin(t1)/sqrt(2); y1 = cos(t1)*sin(t1)
+x2 &lt;- x1; y2 = y1+1;
+
+#sign into plotly, make plotly graph
+source('plotly.R')
+p &lt;- plotly('anna__lyst','y7t6z')
+p$plotly(x1,y1,x2,y2)
+
+# style the legend
+fontlist = '\"Avant Garde\", Avantgarde, \"Century Gothic\", CenturyGothic, \"AppleGothic\", sans-serif'<span class="label-note" data-title="Supply a list of fonts in order of preference for the browser." data-placement="right" data-original-title="">note</span>
+
+
+legendstyle = list(<span class="label-note" data-title="This is the maximal legendstyle struct. Not all field, value pairs need to be specified." data-placement="right" data-original-title="">note</span>
+    borderwidth=4,
+    bordercolor='rgb(74,134,232',
+    bgcolor='rgb(0,255,255',<span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span>
+    font=list(
+        family=fontlist,
+        size=14,
+        color='black')
+    )
+
+layoutstyle = list(legend=legendstyle)
+
+response &lt;- p$legend(legendstyle)
+
+# url and filename
+url &lt;- response$url
+filename &lt;- response$filename
+</pre>
+</div>
+

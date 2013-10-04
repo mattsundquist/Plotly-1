@@ -1,0 +1,775 @@
+<!--  -->
+<div class="example-block rest basic-line">
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  [1,2,3,4], [10, 15, 13, 17],
+  [2,3,4,5], [16, 5, 11, 9]
+]
+</pre>
+</div>
+
+<!--  -->
+<div class="example-block rest line-scatter">
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  {
+    "x": [1, 2, 3, 4], 
+    "y": [10, 15, 13, 17],
+    "type": "scatter", 
+    "mode": "markers"
+  },
+  {
+    "x": [2, 3, 4, 5], 
+    "y": [16, 5, 11, 9],
+    "type": "scatter", 
+    "mode": "lines"
+  },
+  {
+    "x": [1, 2, 3, 4], 
+    "y": [12, 9, 15, 12],
+    "type": "scatter", 
+    "mode": "lines+markers"
+  }
+]
+</pre>
+</div>
+<!--  -->
+<div class="example-block rest line-style">
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+ {
+   "x":[1, 2, 3], <span class="label-note" data-title="All optional key:value pairs are specified in this example. Only " x"="" and="" "y"="" key:value="" pairs="" are="" required."="" data-placement="right" data-original-title="">note</span>
+   "y":[4, 5, 6],
+   "type":"scatter", <span class="label-options" data-title="'scatter'&lt;br&gt;'bar'&lt;br&gt;'heatmap'&lt;br&gt;'histogramx'&lt;br&gt;'histogramy'&lt;br&gt;'histogram2d'" data-placement="right" data-original-title="">options</span>
+   "name":"Experiment",
+   "line":{
+     "color":"rgb(3,78,123)", <span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span>
+     "width":6,
+     "dash":"dot" <span class="label-options" data-title="solid&lt;br&gt;dot&lt;br&gt;dash&lt;br&gt;longdash&lt;br&gt;dashdot&lt;br&gt;longdashdot" data-placement="right" data-original-title="">options</span>
+   },
+   "marker":{
+     "opacity":1.0,
+     "symbol":"square", <span class="label-options" data-title="square&lt;br&gt;circle&lt;br&gt;cross&lt;br&gt;triangle-up&lt;br&gt;triangle-down&lt;br&gt;triangle-left&lt;br&gt;triangle-right" data-placement="right" data-original-title="">options</span>
+     "size":12,
+     "color":"rgb(54,144,192)",
+     "line":{ <span class="label-note" data-title="this line refers to the border around the markers" data-placement="right" data-original-title="">note</span>
+      "width":3,
+      "color":"darkblue"
+     }
+   }
+  },
+  {
+   "x":[1, 2, 3],
+   "y":[2, 10, 12],
+   "type":"scatter",
+   "name":"Control",
+   "line":{
+     "color":"purple",
+     "width":4,
+     "dash":"dashdot"
+   },
+   "marker":{
+     "opacity":0.9,
+     "symbol":"cross",
+     "size":16,
+     "color":"fuchsia",
+     "line":{
+      "color":"",
+      "width":0
+     }
+   }
+  }
+]                        
+</pre>
+</div>
+
+<!--============-->
+<!-- Area Plots -->
+<!--============-->
+<!--basic-area -->
+<div class="example-block rest basic-area">
+<pre class="prettyprint linenums lang-py code-rest">
+args: [ 
+  {
+    "x": [1, 2, 3, 4], 
+    "y": [0, 2, 3, 5],
+    "fill": "tozeroy"  <span class="label-options" data-title="'tozeroy'&lt;br&gt;'tonexty'&lt;br&gt;'tozerox'&lt;br&gt;'tonextx'" data-placement="right" data-original-title="">options</span>
+  },
+  {
+    "x": [1, 2, 3, 4], 
+    "y": [3, 5, 1, 7],
+    "fill": "tonexty"
+    }
+]
+</pre>
+</div>
+
+<!--============-->
+<!-- BAR CHARTS -->
+<!--============-->
+<!-- basic-bar  -->
+<div class="example-block rest basic-bar">
+<pre class="prettyprint linenums lang-py code-rest">
+args: [{
+  "x": ["giraffes", "orangutans", "monkeys"], <span class="label-note" data-title="x-data can also be numerical" data-placement="right" data-original-title="">note</span>
+  "y": [20, 14, 23],
+  "type": "bar" <span class="label-options" data-title="&quot;scatter&quot;&lt;br&gt;&quot;bar&quot;&lt;br&gt;&quot;heatmap&quot;&lt;br&gt;&quot;histogramx&quot;&lt;br&gt;&quot;histogramy&quot;&lt;br&gt;&quot;histogram2d&quot;" data-placement="right" data-original-title="">options</span>
+}]
+</pre>
+</div>
+<!-- grouped-bar -->
+<div class="example-block rest grouped-bar">
+<pre class="prettyprint linenums lang-py code-rest">
+{
+  args:  [
+    {
+    "name": "SF Zoo", 
+    "x": ["giraffes", "orangutans", "monkeys"], 
+    "y": [20, 14, 23],
+    "type": "bar"
+    },
+    {
+    "name": "LA Zoo",
+    "x": ["giraffes", "orangutans", "monkeys"], 
+    "y": [12, 18, 29],
+    "type": "bar"
+    }
+  ],
+  kwargs: {
+    "layout":{
+      "barmode": "group",<span class="label-options" data-title="&quot;group&quot;&lt;br&gt;&quot;stack&quot;&lt;br&gt;&quot;overlay&quot;" data-placement="right" data-original-title="">options</span>
+      "xaxis": {"type": "category"},
+      "categories": ["giraffes", "orangutans", "monkeys"]
+    }
+  }
+}
+</pre>
+</div>
+
+<!-- stacked-bar -->
+<div class="example-block rest stacked-bar">
+
+<pre class="prettyprint linenums lang-py code-rest">
+{
+  args:  [
+    {
+    "name": "SF Zoo", 
+    "x": ["giraffes", "orangutans", "monkeys"], 
+    "y": [20, 14, 23],
+    "type": "bar"
+    },
+    {
+    "name": "LA Zoo",
+    "x": ["giraffes", "orangutans", "monkeys"], 
+    "y": [12, 18, 29],
+    "type": "bar"
+    }
+  ], 
+  kwargs: {
+    "layout": {
+        "barmode": "stack",<span class="label-options" data-title="&quot;group&quot;&lt;br&gt;&quot;stack&quot;&lt;br&gt;&quot;overlay&quot;" data-placement="right" data-original-title="">options</span>
+        "xaxis": {"type": "category"},
+        "categories": ["giraffes", "orangutans", "monkeys"]
+    }
+  }
+}
+</pre>
+</div>
+<!-- style-bar -->
+<div class="example-block rest style-bar">
+<pre class="prettyprint linenums lang-py code-rest">
+{
+  args: [
+    {
+      "name": "SF Zoo", 
+      "x": ["giraffes", "orangutans", "monkeys"], 
+      "y": [20, 14, 23],
+      "type": "bar",
+      "marker": { <span class="label-note" data-title="&quot;marker&quot; refers to the bar." data-placement="right" data-original-title="">note</span>
+        "color": "orange", <span class="label-options" data-title="colorname (e.g. &quot;lightblue&quot;)&lt;br&gt;RGB (e.g. &quot;rgb(12,32,42)&quot;)&lt;br&gt;RGBA (e.g. &quot;rgba(12,32,42,0.9)&quot;)&lt;br&gt;HEX (e.g. &quot;#H23423&quot;)" data-placement="right" data-original-title="">options</span>
+        "line": {<span class="label-note" data-title="&quot;line&quot; refers to the line around the bar." data-placement="right" data-original-title="">note</span>
+          "color": "grey"
+          }
+        }
+    },
+  {
+    "name": "LA Zoo",
+    "x": ["giraffes", "orangutans", "monkeys"], 
+    "y": [12,18,29],
+    "type": "bar",
+    "marker": {
+      "color": "blue",
+        "line": {
+            "color": "grey",
+            "width": 3
+          }
+      }
+    }
+  ],
+  kwargs: "layout": {
+    "title": "Animal Population",
+    "barmode": "group",<span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
+    "yaxis": {"name": "# of animals (thousands)"}
+    "xaxis": {"type": "category"},
+    "categories": ["giraffes", "orangutans", "monkeys"],
+    "bargap": 0.25,<span class="label-note" data-title="This is the gap between bars inside a group." data-placement="right" data-original-title="">note</span>
+    "bargroupgap": 0.3,<span class="label-note" data-title="This is the gap between groups of bars." data-placement="right" data-original-title="">note</span>
+    "bardir": "v"
+  }<span class="label-options" data-title="'v' for vertically aligned bars&lt;br&gt;'h' for horizontally aligned bars" data-placement="right" data-original-title="">options</span>
+}
+</pre>
+</div>
+
+<!--============-->
+<!-- ERROR BARS -->
+<!--============-->
+
+<!--  Error Bars -->
+<div class="example-block rest basic-error-bar">
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  {
+    "x": [0, 1, 2],
+    "y": [6, 10, 2],
+    "error_y": {
+      "type": "data",<span class="label-options" data-title="&quot;data&quot;&lt;br&gt;&quot;percent&quot;&lt;br&gt;&quot;constant&quot;&lt;br&gt;&quot;sqrt&quot;" data-placement="right" data-original-title="">options</span>
+      "array": [1, 2, 3],<span class="label-note" data-title="Specify a &quot;value&quot; for the &quot;percent&quot; and &quot;constant&quot; error bar type, an &quot;array&quot; for the &quot;data&quot; error bar type, and nothing for the &quot;sqrt&quot; error bar type" data-placement="right" data-original-title="">note</span>
+      "visible": true
+    }
+  }
+]
+</pre>
+</div>
+<!--  percent-error-bar -->
+<div class="example-block rest percent-error-bar">  
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  {
+    "x": [0, 1, 2],
+    "y": [6, 10, 2],
+    "error_y": {
+      "type": "percent",<span class="label-options" data-title="&quot;data&quot;&lt;br&gt;&quot;percent&quot;&lt;br&gt;&quot;constant&quot;&lt;br&gt;&quot;sqrt&quot;" data-placement="right" data-original-title="">options</span>
+      "value": 50,<span class="label-note" data-title="Specify a &quot;value&quot; for the &quot;percent&quot; and &quot;constant&quot; error bar type, an &quot;array&quot; for the &quot;data&quot; error bar type, and nothing for the &quot;sqrt&quot; error bar type" data-placement="right" data-original-title="">note</span>
+      "visible": true
+    }
+  }
+]
+</pre>
+</div>
+<!-- error-bar-bar -->
+<div class="example-block rest error-bar-bar">
+<pre class="prettyprint linenums lang-py code-rest">
+{
+  args: [
+  {
+    "x": ["Trial 1", "Trial 2", "Trial 3"], 
+    "y": [3, 6, 4],
+    "name": "Control",
+    "error_y": {
+        "type": "data",
+        "array": [1, 0.5, 1.5],
+        "visible": true
+      }
+  },
+  {
+    "x": ["Trial 1", "Trial 2", "Trial 3"], 
+    "y": [4, 7, 3],
+    "name": "Experimental",
+    "error_y": {
+      "type": "data",<span class="label-options" data-title="&quot;data&quot;&lt;br&gt;&quot;percent&quot;&lt;br&gt;&quot;constant&quot;&lt;br&gt;&quot;sqrt&quot;" data-placement="right" data-original-title="">options</span>
+        "array": [0.5, 1, 2], <span class="label-note" data-title="specify a value for the " percent"="" and="" "constant"="" error="" bar="" type."="" data-placement="right" data-original-title="">note</span>
+      "visible": true
+      }
+  }
+], 
+  kwargs: {
+    layout: {
+      "barmode": "group"
+    }
+  }
+}
+</pre>
+</div>
+
+<!--===========-->
+<!-- BOX PLOTS -->
+<!--===========-->
+
+<!--  basic-box-plot -->
+<div class="example-block rest basic-box-plot">
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  {
+    "y": [0, 1, 2, 4],
+    "type": "box"
+  },
+  {
+    "y": [1, 2, 4, 5, 8],
+    "type": "box"
+  }
+]
+</pre>
+</div>
+<!-- jitter -->
+<div class="example-block rest jitter">
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  {
+    "y": [...],
+    "type": "box",
+    "boxpoints": "all", <span class="label-options" data-title="&quot;all&quot;&lt;br&gt;&quot;outliers&quot;&lt;br&gt;False" data-placement="right" data-original-title="">options</span>
+    "jitter": 0.3,   <span class="label-note" data-title="width of the jittered scatter" data-placement="right" data-original-title="">note</span>
+    "pointpos": -1.8  <span class="label-note" data-title="amount that the data points are offset from the boxplot" data-placement="right" data-original-title="">note</span>
+  }
+]
+
+</pre>
+</div>
+
+<!--============-->
+<!-- HISTOGRAMS -->
+<!--============-->
+<!-- basic-histo -->
+<div class="example-block rest basic-histo">
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  {
+    "x": [...],
+    "type": "histogramx"
+  }
+]
+
+</pre>
+</div>
+<!-- stacked-histo -->
+<div class="example-block rest stacked-histo">
+<pre class="prettyprint linenums lang-py code-rest">
+{
+  args: [
+    {
+      "x": [...],
+      "type": "histogramx"
+    },
+    {
+      "x": [...],
+      "type": "histogramx"
+    }
+  ],
+  kwargs: {
+    "layout": 
+    {
+      "barmode": "stacked" <span class="label-options" data-title="&quot;group&quot;&lt;br&gt;&quot;stack&quot;&lt;br&gt;&quot;overlay&quot;" data-placement="right" data-original-title="">options</span>
+    }
+  }
+
+}
+</pre>
+</div>
+<!-- overlaid-histo -->
+<div class="example-block rest overlaid-histo">
+<pre class="prettyprint linenums lang-py code-rest">
+{
+  args: [
+    {
+      "x": [...],
+      "type": "histogramx"
+    },
+    {
+      "x": [...],
+      "type": "histogramx"
+    }
+  ],
+  kwargs: {
+    "layout": 
+    {
+      "barmode": "stacked" <span class="label-options" data-title="&quot;group&quot;&lt;br&gt;&quot;stack&quot;&lt;br&gt;&quot;overlay&quot;" data-placement="right" data-original-title="">options</span>
+    }
+  }
+}
+</pre>
+</div>
+<!-- style-histo -->
+<div class="example-block rest style-histo">
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  {
+    "x": [...],
+    "type": "histogramx",
+    "name": "control",
+    "marker": {<span class="label-note" data-title="&quot;marker&quot; refers to the bar." data-placement="right" data-original-title="">note</span>
+      "color": "fuchsia",<span class="label-options" data-title="colorname (e.g. &quot;lightblue&quot;)&lt;br&gt;RGB (e.g. &quot;rgb(12,32,42)&quot;)&lt;br&gt;RGBA (e.g. &quot;rgba(12,32,42,0.9)&quot;)&lt;br&gt;HEX (e.g. &quot;#H23423&quot;)" data-placement="right" data-original-title="">options</span>
+      "opacity": 0.75,
+      "line": {
+        "color": "grey",<span class="label-note" data-title="" line"="" refers="" to="" the="" line="" around="" bar."="" data-placement="right" data-original-title="">note</span>
+        "width": 0
+      }
+    },
+    "autobinx": False,
+    "xbins": {
+      "start": -3.2,
+      "end": 2.8,
+      "size": 0.2
+    },
+    "histnorm": "count"<span class="label-options" data-title="&quot;count&quot;&lt;br&gt;&quot;percent&quot;&lt;br&gt;&quot;probability&quot;&lt;br&gt;&quot;density&quot;&lt;br&gt;&quot;probability density&quot;" data-placement="right" data-original-title="">options</span>
+  },
+  {
+    "x": [...],
+    "name": "experimental",
+    "type": "histogramx",
+    "marker": {
+      "color": "rgb(255, 217, 102)",
+      "opacity": 0.75
+    },
+    "autobinx": False,
+    "xbins": {
+      "start": -1.8,
+      "end": 4.2,
+      "size": 0.2
+    }
+  }
+], 
+  kwargs: {
+    "layout": {
+      "barmode": "overlay",<span class="label-options" data-title="&quot;group&quot;&lt;br&gt;&quot;stack&quot;&lt;br&gt;&quot;overlay&quot;" data-placement="right" data-original-title="">options</span>
+      "bargap": 0.25,<span class="label-note" data-title="This is the gap between bars inside a group." data-placement="right" data-original-title="">note</span>
+      "bargroupgap": 0.3,<span class="label-note" data-title="This is the gap between groups of bars." data-placement="right" data-original-title="">note</span>
+      "bardir": "v",<span class="label-options" data-title="&quot;v&quot; for vertically aligned bars&lt;br&gt;&quot;h&quot; for horizontally aligned bars" data-placement="right" data-original-title="">options</span>
+      "title": "Sampled Results",
+      "xaxis": {
+      "title": "Value"
+      },
+      "yaxis": {
+        "title": "Count"
+      }
+    }
+  }
+}
+</pre>
+</div>
+<!-- 2d-histo -->
+<div class="example-block rest 2d-histo">
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  {
+    "x": x, 
+    "y": y,
+    "type": "histogram2d"
+  }
+]
+</pre>
+</div>
+<!-- 2d-histo-options -->
+<div class="example-block rest 2d-histo-options">
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  {
+  "x": x, 
+  "y": y,
+  "type": "histogram2d",
+  "autobinx": false,
+  "xbins": {
+    "start": -3,
+    "end": 3,
+    "size": 0.5
+  }
+  "autobiny": false,
+  "ybins": {
+    "start": -2.5,
+    "end": 4,
+    "size": 0.5
+  }
+  "zauto": false,
+  "zmin": 0,
+  "zmax": 0.4,
+  "scl":<span class="label-note" data-title="scl defines the color bar by assigning relative values to colors." data-placement="right" data-original-title="">note</span>
+    [[0, "rgb(8, 29, 88"],
+      [0.25, "rgb(34, 94, 168)"],
+      [0.5, "rgb(65, 182, 196)"],
+      [0.75, "rgb(199, 233, 180)"],
+      [1, "rgb(255, 255, 217)"]], 
+  "histnorm": "probability"<span class="label-options" data-title="&quot;count&quot;&lt;br&gt;&quot;percent&quot;&lt;br&gt;&quot;probability&quot;&lt;br&gt;&quot;density&quot;&lt;br&gt;&quot;probability density&quot;" data-placement="right" data-original-title="">options</span>
+  }
+]
+</pre>
+</div>
+
+<!--==========-->
+<!-- Heatmaps -->
+<!--==========-->
+<!-- basic-heatmap -->
+<div class="example-block rest basic-heatmap">
+
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  {
+  "z": [[1, 20, 30], 
+       [20, 1, 60], 
+       [30, 60, 1]],
+  "type": "heatmap"
+  }
+]
+</pre>
+</div>
+<!-- labeled-heatmap -->
+<div class="example-block rest labeled-heatmap">
+
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  {
+    "x": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "y": ["Morning", "Afternoon", "Evening"],
+    "z": [[1, 20, 30, 50, 1], 
+         [20, 1, 60, 80, 30], 
+         [30, 60, 1, -10, 20]],
+    "type": "heatmap"
+  }
+]
+</pre>
+</div>
+
+<!--=============-->
+<!-- Mixed Types -->
+<!--=============-->
+<!-- bar-line -->
+<div class="example-block rest bar-line">
+
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  {
+    "x": [...],
+    "y": [...],
+    "type": "scatter"
+  },
+  {
+    "x": [0, 1, 2, 3, 4, 5],
+    "y": [1, 0.5, 0.7, -1.2, 0.3, 0.4],
+    "type": "bar"
+  }
+]
+</pre>
+</div>
+<!-- 2d-histo-scatter -->
+<div class="example-block rest 2d-histo-scatter">
+
+<pre class="prettyprint linenums lang-py code-rest">
+args: [
+  {
+    "x": x0, 
+    "y": y0, 
+    "marker": {
+      "symbol": "circle"
+    },
+    "type": "scatter", 
+    "mode": "markers"
+  },
+  {
+    "x": x1,
+    "y": y1, 
+    "marker": {
+      "symbol": "cross"
+    },
+    "type": "scatter", 
+    "mode": "markers"
+  },
+  {
+    "x": [x0, x1], 
+    "y": [y0, y1], 
+    "type": "histogram2d"
+  }
+]
+</pre>
+</div>
+
+<!-- file-options -->
+<div class="example-block rest file-options">
+  <div class="code-rest">
+<strong>Subplot 1:</strong>
+<pre class="prettyprint linenums lang-py">
+{
+  args: [
+    [1,2,3,4], 
+    [3,6,4,5]
+  ], 
+  kwargs: {
+    "filename": "myplot",
+    "fileopt": "new",
+    "layout": {
+    "title": "fileopt='new'"
+    }
+  }
+}
+</pre>
+<strong>Subplot 2:</strong>
+<pre class="prettyprint linenums lang-py">
+{
+  args: [
+    [1, 2, 3, 4], 
+    [5, 4, 5, 4]
+  ],
+  kwargs: {
+    "filename": "my plot",
+    "fileopt": "append",
+    "layout":{
+      "title": "fileopt='append'"
+    }
+  }
+}
+</pre>
+<strong>Subplot 3:</strong>
+<pre class="prettyprint linenums lang-py">
+{
+  args: [
+    [1, 2, 3, 4],
+    [5, 5, 3, 3]
+  ],
+  kwargs: {
+    "filename": "my plot",
+    "fileopt": "overwrite",
+    "layout":{
+      "title": "fileopt='overwrite'"
+    }
+  }
+}
+</pre>
+<strong>Subplot 4:</strong>
+<pre class="prettyprint linenums lang-py">
+{
+  args: [
+    [5, 6, 7],
+    [4, 4, 5]
+  ],
+  kwargs: {
+  "filename": "my plot",
+  "fileopt": "extend",
+  "layout": {
+    "title": "fileopt='extend'"
+    }
+  }
+}
+</pre>
+</div>
+</div>
+
+<!-- size-background -->
+<div class="example-block rest size-background">
+<pre class="prettyprint linenums lang-py code-rest">
+kwargs: {
+  layout: {
+    "title": "Damped Sinusoid", 
+    "titlefont": { 
+      "family":"Avant Garde",
+      "size": 25,
+      "color": "rgb(84, 39, 143)"}, <span class="label-options" data-title="colorname (e.g. &quot;lightblue&quot;)&lt;br&gt;RGB (e.g. &quot;rgb(12,32,42)&quot;)&lt;br&gt;RGBA (e.g. &quot;rgba(12,32,42,0.9)&quot;)&lt;br&gt;HEX (e.g. &quot;#H23423&quot;)" data-placement="right" data-original-title="">options</span>
+    "autosize": False, 
+    "width": 600, 
+    "height": 600, 
+    "margin":{"l": 70,<span class="label-note" data-title="&quot;l&quot;: left&lt;br&gt;&quot;r&quot;: right&lt;br&gt;&quot;t&quot;: top&lt;br&gt;&quot;b&quot;: bottom&lt;br&gt;" data-placement="right" data-original-title="">note</span>
+        "r": 40,
+        "t": 60,
+        "b": 60,
+        "pad": 2 }, 
+    "paper_bgcolor": "rgb(188, 189, 220)",<span class="label-note" data-title="margin background color" data-placement="right" data-original-title="">note</span>
+    "plot_bgcolor": "rgb(158, 154, 200)",,<span class="label-note" data-title="plot background color" data-placement="right" data-original-title="">note</span>
+    
+    "font": { <span class="label-note" data-title="global font - applied to all the text except the title if &quot;titlefont&quot; is specified" data-placement="right" data-original-title="">note</span>
+      "family": "Avant Garde",
+      "size": 20,
+      "color": "rgb(84, 39, 143)" },
+    "showlegend": False 
+  }
+}
+</pre>
+</div>
+
+<!-- axes-grid -->
+<div class="example-block rest axes-grid">
+<pre class="prettyprint linenums lang-py code-rest">
+kwargs: {
+  "layout": {
+    "xaxis": 
+      {
+        "title": "time (ms)",
+        "titlefont": {
+          "color": "rgb(102,102,102)", <span class="label-options" data-title="colorname (e.g. &quot;lightblue&quot;)&lt;br&gt;RGB (e.g. &quot;rgb(12,32,42)&quot;)&lt;br&gt;RGBA (e.g. &quot;rgba(12,32,42,0.9)&quot;)&lt;br&gt;HEX (e.g. &quot;#H23423&quot;)" data-placement="right" data-original-title="">options</span>
+          "size": 18
+        },
+        "type": "linear", <span class="label-options" data-title="&quot;linear&quot;&lt;br&gt;&quot;log&quot;" data-placement="right" data-original-title="">options</span>
+        "autorange": False,
+        "range": [-1, 11],
+       
+        "autotick": False,
+        "range": [-1, 11],
+        "tick0": 0,
+        "dtick": 2, <span class="label-note" data-title="numerical spacing between fonts" data-placement="right" data-original-title="">note</span>
+        
+        "showticklabels": True,
+        "ticks": "outside", <span class="label-options" data-title="&quot;outside&quot;&lt;br&gt;&quot;inside&quot;&lt;br&gt;&quot;none&quot;" data-placement="right" data-original-title="">options</span>
+        "ticklen": 8,
+        "tickwidth": 3,
+        "tickcolor": "lightgrey",
+        "tickfont": {
+          "family": 'sans-serif',
+          "size": 14,
+          "color": "rgb(142,142,142)"},
+       
+        "showgrid": True,
+        "gridcolor": "white",
+        "gridwidth": 2,
+        
+        "zeroline": True,
+        "zerolinecolor": "darkgrey",
+        "linecolor": "white"
+      }
+
+    "yaxis": 
+      {
+        "title": "battery voltage (mv)",
+        "titlefont": {
+          "color": "rgb(102,102,102)",
+          "size": 18},
+        "type": "lienar",
+        "gridcolor": "white":
+        "zerolinecolor": "darkgrey",
+        "linecolor": "white",
+        "ticklen": 8,
+        "tickwidth": 3,
+        "tickcolor": "lightgrey",
+        "tickfont": {
+          "family": "sans-serif",
+          "color": "rgb(142,142,142)",
+          "size": 14
+        }
+      }
+    "paper_bgcolor": "white",
+    "plot_bgcolor": "rgb(223,223,223)",
+    "showlegend": False
+  },
+
+  "style": {
+    "line": {
+      "color": "rgb(74,134,23)"
+    }
+  }
+}
+</pre>
+</div>
+
+<!-- legend-format -->
+<div class="example-block rest legend-format">
+<pre class="prettyprint linenums lang-py code-rest">
+kwargs: {
+  "layout": {
+    "legend": { 
+        "bgcolor": "rgb(0, 255, 255)", 
+        "bordercolor": "rgb(74, 134, 232)", 
+        "borderwidth": 4,
+        "font": {
+            "family": "Avant Garde",
+            "size": 14,
+            "color": "black"
+        }
+    }
+  }
+}                  
+</pre>
+</div>

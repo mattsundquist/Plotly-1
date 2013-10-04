@@ -1,0 +1,33 @@
+<!-- PYTHON AUTHENTICATION -->
+<div class="authentication python hide-on-load">
+<pre class="prettyprint lang-py linenums">
+import plotly
+username='anna.lyst'
+email='anna.lyst@plot.ly'
+response = plotly.signup(username, email)
+api_key = response['api_key']
+tmp_pw = response['tmp_pw']
+</pre>
+</div>
+   
+<!-- MATLAB AUTHENTICATION -->             
+<div class="authentication matlab hide-on-load">
+<pre class="prettyprint lang-matlab">
+>> username='anna.lyst'
+>> email='anna.lyst@plot.ly'
+>> response = signup(username, email)
+>> tmp_pw = response.tmp_pw
+>> api_key = response.api_key
+</pre>
+</div>
+         
+<!-- R-PROJECT AUTHENTICATION -->       
+<div class="authentication r-project hide-on-load">
+<pre class="prettyprint lang-py linenums">
+library(plotly)<br>username='anna.lyst'
+email='anna.lyst@plot.ly'
+response = signup(username, email)
+tmp_pw = response$tmp_pw
+api_key = response$api_key
+</pre>
+</div>
