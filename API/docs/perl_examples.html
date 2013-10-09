@@ -5,82 +5,85 @@
 <!-- basic-line -->
 <div class="example-block python basic-line">
 <pre class="prettyprint linenums lang-perl">
-x0 = [1,2,3,4]; y0 = [10,15,13,17]
-x1 = [2,3,4,5]; y1 = [16,5,11,9]
-response = py.plot(x0, y0, x1, y1)
-url = response['url']
-filename = response['filename']
+my $x0 = [1,2,3,4]; my $y0 = [10,15,13,17];
+my $x1 = [2,3,4,5]; my $y1 = [16,5,11,9];
+my $response = $py->plot($x0, $y0, $x1, $y1);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
 <!-- line-scatter -->
 <div class="example-block python line-scatter">
 <pre class="prettyprint linenums lang-perl">
-trace0 = {'x': [1,2,3,4], 
-  'y': [10,15,13,17],
-  'type': 'scatter', 
-  'mode': 'markers'}
+my $trace0 = {x => [1,2,3,4],
+  y => [10,15,13,17],
+  type => 'scatter',
+  mode => 'markers'};
 
-trace1 = {'x': [2,3,4,5], 
-  'y': [16,5,11,9],
-  'type': 'scatter', 
-  'mode': 'lines'}
+my $trace1 = {x => [2,3,4,5],
+  y => [16,5,11,9],
+  type => 'scatter',
+  mode => 'lines'};
 
-trace2 = {'x': [1,2,3,4], 
-  'y': [12,9,15,12],
-  'type': 'scatter', 
-  'mode': 'lines+markers'}
+my $trace2 = {x => [1,2,3,4],
+  y => [12,9,15,12],
+  type => 'scatter',
+  mode => 'lines+markers'};
 
-response = py.plot([trace0, trace1, trace2])
-url = response['url']
-filename = response['filename']
+my $response = $py->plot([$trace0, $trace1, $trace2]);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
 <!-- line-style -->
 <div class="example-block python line-style">
 <pre class="prettyprint linenums lang-perl">
-x1 = [1,2,3]; y1 = [4,5,6]
-x2 = [1,2,3]; y2 = [2,10,12]
+my $x1 = [1,2,3]; my $y1 = [4,5,6];
+my $x2 = [1,2,3]; my $y2 = [2,10,12];
  
 # plotly's data dictionaries
-data1 = {'x': x1,
-    'y': y1,
-    "type":"scatter",
+my $data1 = {x => $x1,
+    y => $y1,
+    type => "scatter",
 
-    "name":"Experiment",
-    "line":{
-        "color":"rgb(3,78,123)", 
-        "width":6,
-        "dash":"dot"
+    name => "Experiment",
+    line => {
+        color => "rgb(3,78,123)",
+        width => 6,
+        dash => "dot"
     },
-    "marker":{
-        "opacity":1.0,
-      "symbol":"square",
-    "size":12,
-        "color":"rgb(54,144,192)",
-        "line":{
-            "width":3,
-            "color":"darkblue"}
+    marker => {
+        opacity => 1.0,
+      symbol => "square",
+    size => 12,
+        color => "rgb(54,144,192)",
+        line => {
+            width => 3,
+            color => "darkblue"}
         }
-}
+};
 
-data2 = {"x":x2,
-    "y":y2,
-    "type":"scatter",
-    "name":"Control",
-    "line":{"color":"purple",
-        "width":4,
-        "dash":"dashdot"},
-    "marker":{"opacity":0.9,
-        "symbol":"cross",
-        "size":16,
-        "color":"fuchsia",
-        "line":{"color":"",
-            "width":0},
+my $data2 = {x => $x2,
+    y => $y2,
+    type => "scatter",
+    name => "Control",
+    line => {color => "purple",
+        width => 4,
+        dash => "dashdot"},
+    marker => {opacity => 0.9,
+        symbol => "cross",
+        size => 16,
+        color => "fuchsia",
+        line => {color => "",
+            width => 0},
     }
-}
+};
                                                                 
+my $response = $py->plot($data1, $data2);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
@@ -91,17 +94,17 @@ data2 = {"x":x2,
 <!-- basic-area -->
 <div class="example-block python basic-area">
 <pre class="prettyprint linenums lang-perl">
-trace0 = {'x': [1,2,3,4], 
-  'y': [0, 2, 3, 5],
-  'fill': 'tozeroy'} <span class="label-options" data-title="'tozeroy'&lt;br&gt;'tonexty'&lt;br&gt;'tozerox'&lt;br&gt;'tonextx'" data-placement="right" data-original-title="">options</span>
+my $trace0 = {x => [1,2,3,4],
+  y => [0, 2, 3, 5],
+  fill => 'tozeroy'}; <span class="label-options" data-title="'tozeroy'&lt;br&gt;'tonexty'&lt;br&gt;'tozerox'&lt;br&gt;'tonextx'" data-placement="right" data-original-title="">options</span>
 
-trace1 = {'x': [1,2,3,4], 
-  'y': [3,5,1,7],
-  'fill': 'tonexty'}
+my $trace1 = {x => [1,2,3,4],
+  y => [3,5,1,7],
+  fill => 'tonexty'};
 
-response = py.plot([trace0, trace1])
-url = response['url']
-filename = response['filename']
+my $response = $py->plot([$trace0, $trace1]);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
@@ -112,35 +115,35 @@ filename = response['filename']
 <!-- basic-bar -->
 <div class="example-block python basic-bar">
 <pre class="prettyprint linenums lang-perl">
-x0 = ['giraffes', 'orangutans', 'monkeys']; <span class="label-note" data-title="x-data can also be numerical" data-placement="right" data-original-title="">note</span>
-y0 = [20, 14, 23];
-data = {'x': x0, 'y': y0,
-    'type': 'bar'} <span class="label-options" data-title="'scatter'&lt;br&gt;'bar'&lt;br&gt;'heatmap'&lt;br&gt;'histogramx'&lt;br&gt;'histogramy'&lt;br&gt;'histogram2d'" data-placement="right" data-original-title="">options</span>
-response = py.plot([data])
-url = response['url']
-filename = response['filename']
+my $x0 = ['giraffes', 'orangutans', 'monkeys']; <span class="label-note" data-title="x-data can also be numerical" data-placement="right" data-original-title="">note</span>
+my $y0 = [20, 14, 23];
+my $data = {x => $x0, y => $y0,
+    type => 'bar'}; <span class="label-options" data-title="'scatter'&lt;br&gt;'bar'&lt;br&gt;'heatmap'&lt;br&gt;'histogramx'&lt;br&gt;'histogramy'&lt;br&gt;'histogram2d'" data-placement="right" data-original-title="">options</span>
+my $response = $py->plot([$data]);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
 <!-- grouped-bar -->
 <div class="example-block python grouped-bar">
 <pre class="prettyprint linenums lang-perl">
-categories = ['giraffes', 'orangutans', 'monkeys']; 
-SF = {'name': 'SF Zoo', 
-    'x': categories, 
-    'y': [20, 14, 23],
-    'type': 'bar'}
-LA = {'name': 'LA Zoo',
-    'x': categories, 
-    'y': [12,18,29],
-    'type': 'bar'}
-layout = {
-    'barmode': 'group',<span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
-    'xaxis': {'type': 'category'},
-    'categories': categories}
-response = py.plot([LA, SF], layout=layout)
-url = response['url']
-filename = response['filename']
+my $categories = ['giraffes', 'orangutans', 'monkeys'];
+my $SF = {name => 'SF Zoo',
+    x => $categories,
+    y => [20, 14, 23],
+    type => 'bar'};
+my $LA = {name => 'LA Zoo',
+    x => $categories,
+    y => [12,18,29],
+    type => 'bar'};
+my $layout = {
+    barmode => 'group',<span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
+    xaxis => {type => 'category'},
+    categories => $categories};
+my $response = $py->plot([$LA, $SF], layout=>$layout);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
@@ -148,51 +151,51 @@ filename = response['filename']
 <div class="example-block python stacked-bar">
 <pre class="prettyprint linenums lang-perl">
 [...]   # ... SF and LA data from above
-layout = {'barmode': 'stack',   <span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
-    'xaxis': {'type': 'category'},
-    'categories': categories}
-response = py.plot([SF, LA], layout=layout)
-url = response['url']
-filename = response['filename']
+my $layout = {barmode => 'stack',   <span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
+    xaxis => {type => 'category'},
+    categories => $categories};
+my $response = $py->plot([$SF, $LA], layout=>$layout);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
 <!-- style-bar -->
 <div class="example-block python style-bar">
 <pre class="prettyprint linenums lang-perl">
-categories=['giraffes', 'orangutans', 'monkeys']
-SF = {'name': 'SF Zoo', 
-  'x': categories, 
-  'y': [20, 14, 23],
-  'type': 'bar',
-  'marker':{<span class="label-note" data-title="'marker' refers to the bar." data-placement="right" data-original-title="">note</span>
-    'color': 'orange', <span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span>
-    'line': {'color': 'grey',  <span class="label-note" data-title="'line' refers to the line around the bar." data-placement="right" data-original-title="">note</span>
-      'width': 3}}
-  }
+my $categories=['giraffes', 'orangutans', 'monkeys'];
+my $SF = {name => 'SF Zoo',
+  x => $categories,
+  y => [20, 14, 23],
+  type => 'bar',
+  marker => {<span class="label-note" data-title="'marker' refers to the bar." data-placement="right" data-original-title="">note</span>
+    color => 'orange', <span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span>
+    line => {color => 'grey',  <span class="label-note" data-title="'line' refers to the line around the bar." data-placement="right" data-original-title="">note</span>
+      width => 3}}
+  };
 
-LA = {'name': 'LA Zoo',
-  'x': categories, 
-  'y': [12,18,29],
-  'type': 'bar',
-  'marker': {'color': 'rgb(111, 168, 220)',
-    'line': {'color': 'grey',
-      'width': 3}}
-  }
+my $LA = {name => 'LA Zoo',
+  x => $categories,
+  y => [12,18,29],
+  type => 'bar',
+  marker => {color => 'rgb(111, 168, 220)',
+    line => {color => 'grey',
+      width => 3}}
+  };
 
-layout = {
-  'title': 'Animal Population',
-  'barmode': 'group',<span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
-  'yaxis': {'name': '# of animals (thousands)'},
-  'xaxis': {'type': 'category'},
-  'categories': categories,
-  'bargap': 0.25,<span class="label-note" data-title="This is the gap between bars inside a group." data-placement="right" data-original-title="">note</span>
-  'bargroupgap': 0.3,<span class="label-note" data-title="This is the gap between groups of bars." data-placement="right" data-original-title="">note</span>
-  'bardir': 'v'}<span class="label-options" data-title="'v' for vertically aligned bars&lt;br&gt;'h' for horizontally aligned bars" data-placement="right" data-original-title="">options</span>
+my $layout = {
+  title => 'Animal Population',
+  barmode => 'group',<span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
+  yaxis => {name => '# of animals (thousands)'},
+  xaxis => {type => 'category'},
+  categories => $categories,
+  bargap => 0.25,<span class="label-note" data-title="This is the gap between bars inside a group." data-placement="right" data-original-title="">note</span>
+  bargroupgap => 0.3,<span class="label-note" data-title="This is the gap between groups of bars." data-placement="right" data-original-title="">note</span>
+  bardir => 'v'};<span class="label-options" data-title="'v' for vertically aligned bars&lt;br&gt;'h' for horizontally aligned bars" data-placement="right" data-original-title="">options</span>
 
-response = py.plot([LA, SF], layout=layout)
-url = response['url']
-filename = response['filename']
+my $response = $py->plot([$LA, $SF], layout=>$layout);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
@@ -203,56 +206,56 @@ filename = response['filename']
 <!-- Error Bars -->
 <div class="example-block python basic-error-bar">
 <pre class="prettyprint linenums lang-perl">
-data = {'x': [0,1,2],
-  'y': [6,10,2],
-  'error_y': {'type': 'data',<span class="label-options" data-title="'data'&lt;br&gt;'percent'&lt;br&gt;'constant'&lt;br&gt;'sqrt'" data-placement="right" data-original-title="">options</span>
-    'array': [1, 2, 3],
-    'visible': True}}
-response = py.plot([data])
-url = response['url']
-filename = response['filename']
+my $data = {x => [0,1,2],
+  y => [6,10,2],
+  error_y => {type => 'data',<span class="label-options" data-title="'data'&lt;br&gt;'percent'&lt;br&gt;'constant'&lt;br&gt;'sqrt'" data-placement="right" data-original-title="">options</span>
+    array => [1, 2, 3],
+    visible => 1}};
+my $response = $py->plot([$data]);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
 <!-- percent-error-bar -->
 <div class="example-block python percent-error-bar">
 <pre class="prettyprint linenums lang-perl">
-data = {'x': [0,1,2],
-  'y': [6,8,4],
-  'error_y': {'type': 'percent',<span class="label-options" data-title="'data'&lt;br&gt;'percent'&lt;br&gt;'constant'&lt;br&gt;'sqrt'" data-placement="right" data-original-title="">options</span>
-    'value': 50, <span class="label-note" data-title="specify a 'value' for the 'percent' and 'constant' error bar type, an 'array' for the 'data' error bar type, and nothing for the 'sqrt' error bar type" data-placement="right" data-original-title="">note</span>
-    'visible': True}}
-response = py.plot([data])
-url = response['url']
-filename = response['filename']
+my $data = {x => [0,1,2],
+  y => [6,8,4],
+  error_y => {type => 'percent',<span class="label-options" data-title="'data'&lt;br&gt;'percent'&lt;br&gt;'constant'&lt;br&gt;'sqrt'" data-placement="right" data-original-title="">options</span>
+    value => 50, <span class="label-note" data-title="specify a 'value' for the 'percent' and 'constant' error bar type, an 'array' for the 'data' error bar type, and nothing for the 'sqrt' error bar type" data-placement="right" data-original-title="">note</span>
+    visible => 1}};
+my $response = $py->plot([$data]);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
 <!-- error-bar-bar -->
 <div class="example-block python error-bar-bar">
 <pre class="prettyprint linenums lang-perl">
-categories = ['Trial 1', 'Trial 2', 'Trial 3']
-control = {'x': categories, 
-  'y': [3, 6, 4],
-  'type': 'bar',
-  'marker':{'color': 'rgb(74, 134, 232)'},
-  'error_y': {'type': 'data',
-    'array': [1, 0.5, 1.5],
-    'visible': True,
-    'color': 'rgb(67, 67, 67)'}}
-exp = {'x': categories,
-  'y': [4, 7, 3],
-  'type': 'bar',
-  'marker':{'color':'rgb(111, 168, 220)'},
-  'error_y': {'type': 'data',<span class="label-options" data-title="'data'&lt;br&gt;'percent'&lt;br&gt;'constant'&lt;br&gt;'sqrt'" data-placement="right" data-original-title="">options</span>
-    'array': [0.5, 1, 2], <span class="label-note" data-title="specify a value for the 'percent' and 'constant' error bar type." data-placement="right" data-original-title="">note</span>
-    'visible': True,
-    'color': 'rgb(67, 67, 67)'}}
-layout = {'barmode': 'group'}
+my $categories = ['Trial 1', 'Trial 2', 'Trial 3'];
+my $control = {x => $categories,
+  y => [3, 6, 4],
+  type => 'bar',
+  marker => {color => 'rgb(74, 134, 232)'},
+  error_y => {type => 'data',
+    array => [1, 0.5, 1.5],
+    visible => 1,
+    color => 'rgb(67, 67, 67)'}};
+my $exp = {x => $categories,
+  y => [4, 7, 3],
+  type => 'bar',
+  marker => {color => 'rgb(111, 168, 220)'},
+  error_y => {type => 'data',<span class="label-options" data-title="'data'&lt;br&gt;'percent'&lt;br&gt;'constant'&lt;br&gt;'sqrt'" data-placement="right" data-original-title="">options</span>
+    array => [0.5, 1, 2], <span class="label-note" data-title="specify a value for the 'percent' and 'constant' error bar type." data-placement="right" data-original-title="">note</span>
+    visible => 1,
+    color => 'rgb(67, 67, 67)'}};
+my $layout = {barmode => 'group'};
 
-response = py.plot([control, exp], layout=layout)
-url = response['url']
-filename = response['filename']
+my $response = $py->plot([$control, $exp], layout=>$layout);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
@@ -263,28 +266,28 @@ filename = response['filename']
 <!-- basic-box-plot -->
 <div class="example-block python basic-box-plot">
 <pre class="prettyprint linenums lang-perl">
-box1 = {'y': [0, 1, 2, 4],
-    'type': 'box'}
-box2 = {'y': [1,2,4,5,8],
-    'type': 'box'}
-response = py.plot([box1, box2])
-url = response['url']
-filename = response['filename']
+my $box1 = {y => [0, 1, 2, 4],
+    type => 'box'};
+my $box2 = {y => [1,2,4,5,8],
+    type => 'box'};
+my $response = $py->plot([$box1, $box2]);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
 <!-- jitter -->
 <div class="example-block python jitter">
 <pre class="prettyprint linenums lang-perl">
-from numpy import *
-box = {'y': random.randn(50),
-    'type': 'box',
-    'boxpoints': 'all', <span class="label-options" data-title="'all'&lt;br&gt;'outliers'&lt;br&gt;False" data-placement="right" data-original-title="">options</span>
-    'jitter': 0.3,   <span class="label-note" data-title="width of the jittered scatter" data-placement="right" data-original-title="">note</span>
-    'pointpos': -1.8}  <span class="label-note" data-title="amount that the data points are offset from the boxplot" data-placement="right" data-original-title="">note</span>
-response = py.plot([box])
-url = response['url']
-filename = response['filename']
+use PDL;
+my $box = {y => random(50),
+    type => 'box',
+    boxpoints => 'all', <span class="label-options" data-title="'all'&lt;br&gt;'outliers'&lt;br&gt;False" data-placement="right" data-original-title="">options</span>
+    jitter => 0.3,   <span class="label-note" data-title="width of the jittered scatter" data-placement="right" data-original-title="">note</span>
+    pointpos => -1.8};  <span class="label-note" data-title="amount that the data points are offset from the boxplot" data-placement="right" data-original-title="">note</span>
+my $response = $py->plot([$box]);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
@@ -295,30 +298,30 @@ filename = response['filename']
 <!-- basic-histo -->
 <div class="example-block python basic-histo">
 <pre class="prettyprint linenums lang-perl">
-from numpy import *
-x = random.randn(500) # normally distributed vector
-data = {'x': x,
-    'type': 'histogramx'}
-response = py.plot([data])
-url = response['url']
-filename = response['filename']
+use PDL;
+my $x = grandom(500); # normally distributed vector
+my $data = {x => $x,
+    type => 'histogramx'};
+my $response = $py->plot([$data]);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
 <!-- stacked-histo -->
 <div class="example-block python stacked-histo">
 <pre class="prettyprint linenums lang-perl">
-from numpy import *
-x0 = random.randn(500)
-x1 = random.randn(500)+1
-data0 = {'x': x0,
-    'type': 'histogramx'}
-data1 = {'x': x1,
-    'type': 'histogramx'}
-layout = {'barmode': 'stack'} <span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
-response = py.plot([data0, data1], layout=layout)
-url = response['url']
-filename = response['filename']
+use PDL;
+my $x0 = grandom(500);
+my $x1 = grandom(500)+1;
+my $data0 = {x => $x0,
+    type => 'histogramx'};
+my $data1 = {x => $x1,
+    type => 'histogramx'};
+my $layout = {barmode => 'stack'}; <span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
+my $response = $py->plot([$data0, $data1], layout=>$layout);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
@@ -326,117 +329,117 @@ filename = response['filename']
 <div class="example-block python overlaid-histo">
 <pre class="prettyprint linenums lang-perl">
 [...] # data0, data1 from the above example
-layout = {'barmode': 'overlay'}  <span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
-response = py.plot([data0, data1], layout=layout)
-url = response['url']
-filename = response['filename']
+my $layout = {barmode => 'overlay'};  <span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
+my $response = $py->plot([$data0, $data1], layout=>$layout);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
 <!-- style-histo -->
 <div class="example-block python style-histo">
 <pre class="prettyprint linenums lang-perl">
-from numpy import *
-x0 = random.randn(500)
-x1 = random.randn(500)+1
-data0 = {'x': x0,
-  'type': 'histogramx',
-  'name': 'control',
-  'marker':{<span class="label-note" data-title="'marker' refers to the bar." data-placement="right" data-original-title="">note</span>
-    'color': 'fuchsia',<span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span>
-    'opacity': 0.75,
-    'line': {'color': 'grey',<span class="label-note" data-title="'line' refers to the line around the bar." data-placement="right" data-original-title="">note</span>
-      'width': 0}},
-  'autobinx': False,
-  'xbins':{
-    'start': -3.2,
-    'end': 2.8,
-    'size': 0.2},
-  'histnorm': 'count'<span class="label-options" data-title="'count'&lt;br&gt;'percent'&lt;br&gt;'probability'&lt;br&gt;'density'&lt;br&gt;'probability density'" data-placement="right" data-original-title="">options</span>
-}
-data1 = {'x': x1,
-  'name': 'experiment',
-  'type': 'histogramx',
-  'marker':{
-    'color': 'rgb(255, 217, 102)',
-    'opacity': 0.75},
-  'autobinx': False,
-  'xbins':{
-    'start': -1.8,
-    'end': 4.2,
-    'size': 0.2}}
+use PDL;
+my $x0 = grandom(500);
+my $x1 = grandom(500)+1;
+my $data0 = {x => $x0,
+  type => 'histogramx',
+  name => 'control',
+  marker => {<span class="label-note" data-title="'marker' refers to the bar." data-placement="right" data-original-title="">note</span>
+    color => 'fuchsia',<span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span>
+    opacity => 0.75,
+    line => {color => 'grey',<span class="label-note" data-title="'line' refers to the line around the bar." data-placement="right" data-original-title="">note</span>
+      width => 0}},
+  autobinx => undef,
+  xbins => {
+    start => -3.2,
+    end => 2.8,
+    size => 0.2},
+  histnorm => 'count'<span class="label-options" data-title="'count'&lt;br&gt;'percent'&lt;br&gt;'probability'&lt;br&gt;'density'&lt;br&gt;'probability density'" data-placement="right" data-original-title="">options</span>
+};
+my $data1 = {x => $x1,
+  name => 'experiment',
+  type => 'histogramx',
+  marker => {
+    color => 'rgb(255, 217, 102)',
+    opacity => 0.75},
+  autobinx => undef,
+  xbins => {
+    start => -1.8,
+    end => 4.2,
+    size => 0.2}};
 
-layout = {'barmode': 'overlay',<span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
-  'bargap': 0.25,<span class="label-note" data-title="This is the gap between bars inside a group." data-placement="right" data-original-title="">note</span>
-  'bargroupgap': 0.3,<span class="label-note" data-title="This is the gap between groups of bars." data-placement="right" data-original-title="">note</span>
-  'bardir': 'v',<span class="label-options" data-title="'v' for vertically aligned bars&lt;br&gt;'h' for horizontally aligned bars" data-placement="right" data-original-title="">options</span>
-  'title': 'Sampled Results',
-  'xaxis': {'title': 'Value'},
-  'yaxis': {'title': 'Count'}}  
-response = py.plot([data0, data1], layout=layout)
-url = response['url']
-filename = response['filename']
+my $layout = {barmode => 'overlay',<span class="label-options" data-title="'group'&lt;br&gt;'stack'&lt;br&gt;'overlay'" data-placement="right" data-original-title="">options</span>
+  bargap => 0.25,<span class="label-note" data-title="This is the gap between bars inside a group." data-placement="right" data-original-title="">note</span>
+  bargroupgap => 0.3,<span class="label-note" data-title="This is the gap between groups of bars." data-placement="right" data-original-title="">note</span>
+  bardir => 'v',<span class="label-options" data-title="'v' for vertically aligned bars&lt;br&gt;'h' for horizontally aligned bars" data-placement="right" data-original-title="">options</span>
+  title => 'Sampled Results',
+  xaxis => {title => 'Value'},
+  yaxis => {title => 'Count'}};
+my $response = $py->plot([$data0, $data1], layout=>$layout);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
 <!-- 2d-histo -->
 <div class="example-block python 2d-histo">
 <pre class="prettyprint linenums lang-perl">
-from numpy import *
-x = random.randn(500)
-y = random.randn(500)+1
-data = {'x': x, 'y': y,
-    'type': 'histogram2d'}
-response = py.plot([data])
-url = response['url']
-filename = response['filename']
+use PDL;
+my $x = grandom(500);
+my $y = grandom(500)+1;
+my $data = {x => $x, y => $y,
+    type => 'histogram2d'};
+my $response = $py->plot([$data]);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
 <!-- 2d-histo-options -->
 <div class="example-block python 2d-histo-options">
 <pre class="prettyprint linenums lang-perl">
-from numpy import *
-x = random.randn(500)
-y = random.randn(500)+1
-data = {'x': x, 
-    'y': y,
-    'type': 'histogram2d',
-    'autobinx': False,
-    'xbins': {
-        'start': -3,
-        'end': 3,
-        'size': 0.1
+use PDL;
+my $x = grandom(500);
+my $y = grandom(500)+1;
+my $data = {x => $x,
+    y => $y,
+    type => 'histogram2d',
+    autobinx => undef,
+    xbins => {
+        start => -3,
+        end => 3,
+        size => 0.1
     },
-    'autobiny': False,
-    'ybins': {
-        'start': -2.5,
-        'end': 4,
-        'size': 0.1
+    autobiny => undef,
+    ybins => {
+        start => -2.5,
+        end => 4,
+        size => 0.1
     },
-    'scl': [[0,"rgb(12,51,131)"],\
-        [0.25,"rgb(10,136,186)"],\
-        [0.5,"rgb(242,211,56)"],\
-        [0.75,"rgb(242,143,56)"],\
+    scl => [[0,"rgb(12,51,131)"],
+        [0.25,"rgb(10,136,186)"],
+        [0.5,"rgb(242,211,56)"],
+        [0.75,"rgb(242,143,56)"],
         [1,"rgb(217,30,30)"]],
-    'histnorm': 'probability'
-}
+    histnorm => 'probability'
+};
 
-layout =  {
-    'xaxis':{
-        'range':[-2,2],
-        'autorange':False
-    },'yaxis':{
-        'range':[-1,3],
-        'autorange':False 
+my $layout =  {
+    xaxis => {
+        range => [-2,2],
+        autorange => undef
+    },yaxis => {
+        range => [-1,3],
+        autorange => undef
         },
-    'width':520,'height':380,
-    'autosize':False
-    }
+    width => 520,height => 380,
+    autosize => undef
+    };
 
-response = py.plot([data],layout=layout)
-url = response['url']
-filename = response['filename']
+my $response = $py->plot([$data],layout=>$layout);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
@@ -447,32 +450,32 @@ filename = response['filename']
 <!-- basic-heatmap -->
 <div class="example-block python basic-heatmap">
 <pre class="prettyprint linenums lang-perl">
-z = [[1., 20., 30 ],\
-     [20., 1., 60 ],\
-     [30., 60., 1.]]
-data = {'z': z,
-    'type': 'heatmap'}
-response = py.plot([data])
-url = response['url']
-filename = response['filename']
+my $z = [[1., 20., 30 ],
+     [20., 1., 60 ],
+     [30., 60., 1.]];
+my $data = {z => $z,
+    type => 'heatmap'};
+my $response = $py->plot([$data]);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
 <!-- labeled-heatmap -->
 <div class="example-block python labeled-heatmap">
 <pre class="prettyprint linenums lang-perl">
-x = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-y = ['Morning', 'Afternoon', 'Evening']
-z = [[1., 20., 30, 50, 1],\
-     [20., 1., 60, 80, 30 ],\
-     [30., 60., 1., -10, 20]]
-data = {'x': x,
-    'y': y,
-    'z': z,
-    'type': 'heatmap'}
-response = py.plot([data])
-url = response['url']
-filename = response['filename']
+my $x = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+my $y = ['Morning', 'Afternoon', 'Evening'];
+my $z = [[1., 20., 30, 50, 1],
+     [20., 1., 60, 80, 30 ],
+     [30., 60., 1., -10, 20]];
+my $data = {x => $x,
+    y => $y,
+    z => $z,
+    type => 'heatmap'};
+my $response = $py->plot([$data]);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
@@ -483,50 +486,50 @@ filename = response['filename']
 <!-- bar-line -->
 <div class="example-block python bar-line">
 <pre class="prettyprint linenums lang-perl">
-from numpy import *
-x0 = linspace(0, 5, 15)
-y0 = sin(x0) + random.rand(15)
-data0 = {'x': x0,'y': y0,
-    'type': 'scatter'}
+use PDL;
+my $x0 = my $x0 = zeroes( 15 )->xlinvals( 0, 5 );
+my $y0 = sin($x0) + random(15);
+my $data0 = {x => $x0,y => $y0,
+    type => 'scatter'};
 
-x1 = [0, 1, 2, 3, 4, 5]
-y1 = [1, 0.5, 0.7, -1.2, 0.3, 0.4]
-data1 = {'x': x1,'y': y1,
-    'type': 'bar'}
+my $x1 = [0, 1, 2, 3, 4, 5];
+my $y1 = [1, 0.5, 0.7, -1.2, 0.3, 0.4];
+my $data1 = {x => $x1,y => $y1,
+    type => 'bar'};
 
-response = py.plot([data0, data1])
-url = response['url']
-filename = response['filename']
+my $response = $py->plot([$data0, $data1]);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
 <!-- 2d-histo-scatter -->
 <div class="example-block python 2d-histo-scatter">
 <pre class="prettyprint linenums lang-perl">
-from numpy import *
+use PDL;
  
-x0 = random.randn(100)/5. + 0.5 
-y0 = random.randn(100)/5. + 0.5 
+my $x0 = grandom(100)/5. + 0.5;
+my $y0 = grandom(100)/5. + 0.5;
  
-x1 = random.rayleigh(size=80)/7. + 0.1
-y1 = random.rayleigh(size=80)/8. + 1.1
+my $x1 = grandom(80)/7. + 0.1;
+my $y1 = grandom(80)/8. + 1.1;
  
-y = concatenate([y0,y1])
-x = concatenate([x0,x1])
+my $y = append($y0, $y1);
+my $x = append($x0, $x1);
 
-data0 = {'x': x0, 'y': y0, 
-  'marker':{'symbol':'circle'},
-  'type': 'scatter', 'mode': 'markers'}
-data1 = {'x': x1, 'y': y1, 
-  'marker':{'symbol':'cross'},
-  'type': 'scatter', 'mode': 'markers'}
+my $data0 = {x => $x0, y => $y0,
+  marker => {symbol => 'circle'},
+  type => 'scatter', mode => 'markers'};
+my $data1 = {x => $x1, y => $y1,
+  marker => {symbol => 'cross'},
+  type => 'scatter', mode => 'markers'};
  
-data_hist = {'x': x, 'y': y, 
-  'type':'histogram2d'}
+my $data_hist = {x => $x, y => $y,
+  type => 'histogram2d'};
 
-response = py.plot([data0,data1,data_hist])
-url = response['url']
-filename = response['filename']
+my $response = $py->plot([$data0,$data1,$data_hist]);
+my $url = $response->{url};
+my $filename = $response->{filename};
 </pre>
 </div>
 
@@ -536,82 +539,83 @@ filename = response['filename']
 # creates a new plot named 'myplot'
 # if 'myplot' already exists, then the plot
 # will be named 'myplot (1)'
-r = py.plot([1,2,3,4], [3,6,4,5],
-    filename='myplot',
-    fileopt='new',
-    layout={'title': 'fileopt=\'new\''})
-fn = r['filename']
+my $r = $py->plot([1,2,3,4], [3,6,4,5],
+    filename=>'myplot',
+    fileopt=>'new',
+    layout=>{title => "fileopt='new'"});
+my $fn = $r->{filename};
 
 
 # appends another trace to 'myplot'
-py.plot([1,2,3,4], [5, 4, 5, 4],
-    filename=fn,
-    fileopt='append',
-    layout={'title': 'fileopt=\'append\''})
+$py->plot([1,2,3,4], [5, 4, 5, 4],
+    filename=>$fn,
+    fileopt=>'append',
+    layout=>{title => "fileopt='append'"});
 
 
 # overwrites 'myplot' with new data
-py.plot([1,2,3,4], [5, 5, 3, 3],
-    filename=fn,
-    fileopt='overwrite',
-    layout={'title': 'fileopt=\'overwrite\''})
+$py->plot([1,2,3,4], [5, 5, 3, 3],
+    filename=>$fn,
+    fileopt=>'overwrite',
+    layout=>{title => "fileopt='overwrite'"});
 
 
 
 # extends trace 1 of 'myplot' with new data
 # (good for streaming data into plots)
-py.plot([5, 6, 7], [4, 4, 5],
-    filename=fn,
-    fileopt='extend',
-    layout={'title': 'fileopt=\'extend\''})
+$py->plot([5, 6, 7], [4, 4, 5],
+    filename=>$fn,
+    fileopt=>'extend',
+    layout=>{title => "fileopt='extend'"});
 </pre>
 </div>
 
 <!-- size-background -->
 <div class="example-block python size-background">
 <pre class="prettyprint linenums lang-perl">
-import numpy as np
+use PDL;
+use PDL::Constants 'PI';
 
-x1 = np.linspace(0, 20*np.pi, 500)
-y1 = np.sin(x1)*np.exp(-0.1*x1)
+my $x1 = zeroes(500)->xlinvals(0, 20 * PI);
+my $y1 = sin($x1) * exp(-0.1 * $x1);
 
-py.plot(x1,y1)
+$py->plot($x1, $y1);
 
 # Minimal styling of data
-datastyle = {'line':{
-  'color': 'rgb(84, 39, 143)',
-  'width': 4}}
-py.style(datastyle)
+my $datastyle = {line => {
+  color => 'rgb(84, 39, 143)',
+  width => 4}};
+$py->style($datastyle);
 
 # Style the Layout
-fontlist = '\"Avant Garde\", Avantgarde, \"Century Gothic\", CenturyGothic, \"AppleGothic\", sans-serif'<span class="label-note" data-title="Supply a list of fonts in order of preference for the browser." data-placement="right" data-original-title="">note</span>
+my $fontlist = '\"Avant Garde\", Avantgarde, \"Century Gothic\", CenturyGothic, \"AppleGothic\", sans-serif';<span class="label-note" data-title="Supply a list of fonts in order of preference for the browser." data-placement="right" data-original-title="">note</span>
 
-layout={'title': 'Damped Sinusoid', 
-  'titlefont': { 
-    'family':fontlist,
-    'size': 25,
-    'color': 'rgb(84, 39, 143)'}, <span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span> 
-    'autosize': False, 
-    'width': 600, 
-    'height': 600, 
-    'margin':{'l': 70,<span class="label-note" data-title="l: left&lt;br&gt;r: right&lt;br&gt;t: top&lt;br&gt;b: bottom" data-placement="right" data-original-title="">note</span>
-      'r': 40,
-      't': 60,
-      'b': 60,
-      'pad': 2 }, 
-    'paper_bgcolor': 'rgb(188, 189, 220)',<span class="label-note" data-title="margin background color" data-placement="right" data-original-title="">note</span>
+my $layout = {title => 'Damped Sinusoid',
+  titlefont => {
+    family => $fontlist,
+    size => 25,
+    color => 'rgb(84, 39, 143)'}, <span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span> 
+    autosize => undef,
+    width => 600,
+    height => 600,
+    margin => {l => 70,<span class="label-note" data-title="l: left&lt;br&gt;r: right&lt;br&gt;t: top&lt;br&gt;b: bottom" data-placement="right" data-original-title="">note</span>
+      r => 40,
+      t => 60,
+      b => 60,
+      pad => 2 },
+    paper_bgcolor => 'rgb(188, 189, 220)',<span class="label-note" data-title="margin background color" data-placement="right" data-original-title="">note</span>
 
-    'plot_bgcolor': 'rgb(158, 154, 200)',<span class="label-note" data-title="plot background color" data-placement="right" data-original-title="">note</span>
+    plot_bgcolor => 'rgb(158, 154, 200)',<span class="label-note" data-title="plot background color" data-placement="right" data-original-title="">note</span>
 
-    'font': { <span class="label-note" data-title="global font" data-placement="right" data-original-title="">note</span>
-      'family': fontlist,
-      'size': 20,
-      'color': 'rgb(84, 39, 143)'},
-    'showlegend': False }
+    font => { <span class="label-note" data-title="global font" data-placement="right" data-original-title="">note</span>
+      family => $fontlist,
+      size => 20,
+      color => 'rgb(84, 39, 143)'},
+    showlegend => undef };
 
-response = py.layout(layout)
-url = response['url']
-filename = response['filename']
+my $response = $py->layout($layout);
+my $url = $response->{url};
+my $filename = $response->{filename};
                                                     
 </pre>
 </div>
@@ -619,77 +623,79 @@ filename = response['filename']
 <!-- axes-grid -->
 <div class="example-block python axes-grid">
 <pre class="prettyprint linenums lang-perl">
-from numpy import *
-x1 = linspace(0,10,200)
-y1 = sin(2*pi*x1)*exp(-0.1*x1)
+use PDL;
+use PDL::Constants 'PI';
 
-datastyle = {
-  "line": {"color": "rgb(74,134,23)"}
-}
+my $x1 = zeroes(200)->xlinvals(0, 10);
+my $y1 = sin(2*PI*$x1) * exp(-0.1*$x1);
 
-r = py.plot(x1,y1,style=datastyle)
+my $datastyle = {
+  line => {color => "rgb(74,134,23)"}
+};
 
-layout = {
-  "xaxis": {
-    "title": "time (ms)",
-    "titlefont": {
-      "color": "rgb(102,102,102)", <span class="label-options" data-title="colorname (e.g. &quot;lightblue&quot;)&lt;br&gt;RGB (e.g. &quot;rgb(12,32,42)&quot;)&lt;br&gt;RGBA (e.g. &quot;rgba(12,32,42,0.9)&quot;)&lt;br&gt;HEX (e.g. &quot;#H23423&quot;)" data-placement="right" data-original-title="">options</span>
-      "size": 18
+my $r = $py->plot($x1,$y1,style=>$datastyle);
+
+my $layout = {
+  xaxis => {
+    title => "time (ms)",
+    titlefont => {
+      color => "rgb(102,102,102)", <span class="label-options" data-title="colorname (e.g. &quot;lightblue&quot;)&lt;br&gt;RGB (e.g. &quot;rgb(12,32,42)&quot;)&lt;br&gt;RGBA (e.g. &quot;rgba(12,32,42,0.9)&quot;)&lt;br&gt;HEX (e.g. &quot;#H23423&quot;)" data-placement="right" data-original-title="">options</span>
+      size => 18
     },
-    "type": "linear", <span class="label-options" data-title="&quot;linear&quot;&lt;br&gt;&quot;log&quot;" data-placement="right" data-original-title="">options</span>
-    "autorange": False,
-    "range": [-1, 11],
+    type => "linear", <span class="label-options" data-title="&quot;linear&quot;&lt;br&gt;&quot;log&quot;" data-placement="right" data-original-title="">options</span>
+    autorange => undef,
+    range => [-1, 11],
 
-    "autotick": False,
-    "range": [-1, 11],
-    "tick0": 0,
-    "dtick": 2, <span class="label-note" data-title="numerical spacing between fonts" data-placement="right" data-original-title="">note</span>
+    autotick => undef,
+    range => [-1, 11],
+    tick0 => 0,
+    dtick => 2, <span class="label-note" data-title="numerical spacing between fonts" data-placement="right" data-original-title="">note</span>
 
-    "showticklabels": True,
-    "ticks": "outside", <span class="label-options" data-title="&quot;outside&quot;&lt;br&gt;&quot;inside&quot;&lt;br&gt;&quot;none&quot;" data-placement="right" data-original-title="">options</span>
-    "ticklen": 8,
-    "tickwidth": 3,
-    "tickcolor": "lightgrey",
-    "tickfont": {
-    "family": 'sans-serif',
-    "size": 14,
-    "color": "rgb(142,142,142)"},
+    showticklabels => 1,
+    ticks => "outside", <span class="label-options" data-title="&quot;outside&quot;&lt;br&gt;&quot;inside&quot;&lt;br&gt;&quot;none&quot;" data-placement="right" data-original-title="">options</span>
+    ticklen => 8,
+    tickwidth => 3,
+    tickcolor => "lightgrey",
+    tickfont => {
+    family => 'sans-serif',
+    size => 14,
+    color => "rgb(142,142,142)"},
 
-    "showgrid": True,
-    "gridcolor": "white",
-    "gridwidth": 2,
+    showgrid => 1,
+    gridcolor => "white",
+    gridwidth => 2,
 
-    "zeroline": True,
-    "zerolinecolor": "darkgrey",
-    "linecolor": "white"
+    zeroline => 1,
+    zerolinecolor => "darkgrey",
+    linecolor => "white"
   },
 
-  "yaxis": {
-    "title": "battery voltage (mv)",
-    "titlefont": {
-      "color": "rgb(102,102,102)",
-      "size": 18},
-    "type": "linear",
-    "gridcolor": "white":
-    "zerolinecolor": "darkgrey",
-    "linecolor": "white",
-    "ticklen": 8,
-    "tickwidth": 3,
-    "tickcolor": "lightgrey",
-    "tickfont": {
-      "family": "sans-serif",
-      "color": "rgb(142,142,142)",
-      "size": 14
+  yaxis => {
+    title => "battery voltage (mv)",
+    titlefont => {
+      color => "rgb(102,102,102)",
+      size => 18},
+    type => "linear",
+    gridcolor => "white",
+    zerolinecolor => "darkgrey",
+    linecolor => "white",
+    ticklen => 8,
+    tickwidth => 3,
+    tickcolor => "lightgrey",
+    tickfont => {
+      family => "sans-serif",
+      color => "rgb(142,142,142)",
+      size => 14
     }
   },
-  "paper_bgcolor": "white",
-  "plot_bgcolor": "rgb(223,223,223)",
-  "showlegend": False
-}
+  paper_bgcolor => "white",
+  plot_bgcolor => "rgb(223,223,223)",
+  showlegend => undef
+};
 
-response = py.layout(layout, filename = r['filename'])
-url = response['url']
-filename = response['filename']
+my $response = $py->layout($layout, filename => $r->{filename});
+my $url = $response->{url};
+my $filename = $response->{filename};
 
                                                     
 </pre>
@@ -698,40 +704,37 @@ filename = response['filename']
 <!-- legend-format -->
 <div class="example-block python legend-format">
 <pre class="prettyprint linenums lang-perl">
-from plotly import plotly
-from numpy import *
+use PDL;
+use PDL::Constants 'PI';
  
 # generate some data
-t1 = linspace(0,2*3.14,100)
-x1 = cos(t1)-sin(t1)*sin(t1)/sqrt(2)
-y1 = cos(t1)*sin(t1)
-x2 = x1
-y2 = y1+1
+my $t1 = zeroes(100)->xlinvals(0, 2*PI);
+my $x1 = cos($t1)-sin($t1)*sin($t1)/sqrt(2);
+my $y1 = cos($t1)*sin($t1);
+my $x2 = $x1;
+my $y2 = $y1+1;
 
 # send to plotly
-un = 'anna.lyst'
-key = 'DLK48FAS'
-py = plotly(un,key)
-py.plot(x1,y1,x2,y2)
+$py->plot($x1,$y1,$x2,$y2);
 
 # Style the legend
-fontlist = '\"Avant Garde\", Avantgarde, \"Century Gothic\", CenturyGothic, \"AppleGothic\", sans-serif'<span class="label-note" data-title="Supply a list of fonts in order of preference for the browser." data-placement="right" data-original-title="">note</span>
+my $fontlist = '\"Avant Garde\", Avantgarde, \"Century Gothic\", CenturyGothic, \"AppleGothic\", sans-serif';<span class="label-note" data-title="Supply a list of fonts in order of preference for the browser." data-placement="right" data-original-title="">note</span>
 
-legendstyle = {
-    "bgcolor": "rgb(0, 255, 255)",<span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span>
-    "bordercolor": "rgb(74, 134, 232)",
-    "borderwidth": 4,
-    "font":{
-        'family': fontlist,
-        'size': 14,
-        'color': 'black'
+my $legendstyle = {
+    bgcolor => "rgb(0, 255, 255)",<span class="label-options" data-title="colorname (e.g. 'lightblue')&lt;br&gt;RGB (e.g. 'rgb(12,32,42))'&lt;br&gt;RGBA (e.g. 'rgba(12,32,42,0.9))'&lt;br&gt;HEX (e.g. '#H23423')" data-placement="right" data-original-title="">options</span>
+    bordercolor => "rgb(74, 134, 232)",
+    borderwidth => 4,
+    font => {
+        family => $fontlist,
+        size => 14,
+        color => 'black'
     }
-}
+};
 
 # place legend into layout
-layoutstyle = {'legend': legendstyle}
+my $layoutstyle = {legend => $legendstyle};
 
-(url, filename) = py.setlegendstyle(layoutstyle)
+my ($url, $filename) = $py->layout($layoutstyle);
 </pre>
 </div>
 
